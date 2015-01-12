@@ -1,13 +1,11 @@
-require 'pry'
-
 class Prime
 
   attr_accessor :matrix
 
   def initialize(args)
-    @columns = args[:columns] ||= 10
-    @rows = args[:rows] ||= 10
-    @number = @columns**2
+    @columns = args[:columns].to_i ||= 10
+    @rows = args[:rows].to_i ||= 10
+    @number = @columns*@columns
     @matrix = Array.new(@rows+1){Array.new(@columns+1, 0)}
     @primes = []
   end
@@ -50,10 +48,10 @@ class Prime
   def is_prime?(number)
       return false if number == 1
       return true if number == 2
-      i = 2
-      while i < number
-        return false if number % i == 0
-        i += 1
+      min = 2
+      while min < number
+        return false if number % min == 0
+        min += 1
       end
    true
   end
