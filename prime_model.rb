@@ -28,14 +28,14 @@ class Prime
       return false
     end
 
-    i = 2
-    limit = number / i
+    min = 2
+    limit = number / min
     while i < limit
-      if number % i == 0
+      if number % min == 0
         return false
       end
-      i += 1
-      limit = number / i
+      min += 1
+      limit = number / min
     end
     return true
   end
