@@ -6,7 +6,7 @@ y = ARGV[1]
 
 new_matrix = Prime.new(columns: x, rows: y)
 
-# new_matrix.create_grid_array
+new_matrix.create_grid_array
 
 
 
