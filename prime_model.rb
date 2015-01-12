@@ -2,11 +2,13 @@
 
 class Prime
 
+  attr_accessor :matrix
+
   def initialize(args)
     @columns = args[:columns] ||= 10
     @rows = args[:rows] ||= 10
     @number = @columns**2
-    @matrix = Array.new(@rows+1){Array.new(@columns, 0)}
+    @matrix = Array.new(@rows+1){Array.new(@columns+1, 0)}
     @primes = []
   end
 
@@ -22,6 +24,10 @@ class Prime
         row[0] = @primes[index-1]
       end
     end
+  end
+
+  def fill_in_grid
+
   end
 
   def find_primes
