@@ -1,4 +1,4 @@
-
+require 'pry'
 
 class Prime
 
@@ -8,7 +8,7 @@ class Prime
     @columns = args[:columns] ||= 10
     @rows = args[:rows] ||= 10
     @number = @columns**2
-    @matrix = Array.new(@rows){Array.new(@columns+2, 0)}
+    @matrix = Array.new(@rows+1){Array.new(@columns+1, 0)}
     @primes = []
   end
 
@@ -28,7 +28,15 @@ class Prime
   end
 
   def fill_in_grid
-
+    @matrix.each_with_index do |row, index|
+      unless index == 0
+        row.each_with_index do |number, position|
+          unless position == 0
+            row[position] = @matrix[0][position]*row[0]
+          end
+        end
+      end
+    end
   end
 
   def find_primes
@@ -40,16 +48,14 @@ class Prime
   end
 
   def is_prime?(number)
-    min = 2
-    limit = number / min
-    while min < limit
-      if number % min == 0
-        return false
+      return false if number == 1
+      return true if number == 2
+      i = 2
+      while i < number
+        return false if number % i == 0
+        i += 1
       end
-      min += 1
-      limit = number / min
-    end
-    return true
+   true
   end
 
 end
