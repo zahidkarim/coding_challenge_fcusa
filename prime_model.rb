@@ -6,12 +6,22 @@ class Prime
     @columns = args[:columns] ||= 10
     @rows = args[:rows] ||= 10
     @number = @columns**2
-    @matrix = Array.new(@rows){Array.new(@columns, 0)}
+    @matrix = Array.new(@rows+1){Array.new(@columns, 0)}
     @primes = []
   end
 
-  def create_grid_array
+  def set_top_row
+    @columns.times do
+      @matrix[0] = @primes[0..(@columns-1)]
+    end
+  end
 
+  def set_first_column
+    @matrix.each_with_index do |row, index|
+      unless index == 0
+        row[0] = @primes[index-1]
+      end
+    end
   end
 
   def find_primes
@@ -23,14 +33,9 @@ class Prime
   end
 
   def is_prime?(number)
-
-    if number == 0 or number == 1
-      return false
-    end
-
     min = 2
     limit = number / min
-    while i < limit
+    while min < limit
       if number % min == 0
         return false
       end
