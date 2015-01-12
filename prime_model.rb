@@ -8,7 +8,7 @@ class Prime
     @columns = args[:columns] ||= 10
     @rows = args[:rows] ||= 10
     @number = @columns**2
-    @matrix = Array.new(@rows+1){Array.new(@columns+1, 0)}
+    @matrix = Array.new(@rows){Array.new(@columns+2, 0)}
     @primes = []
   end
 
@@ -16,6 +16,7 @@ class Prime
     @columns.times do
       @matrix[0] = @primes[0..(@columns-1)]
     end
+    @matrix[0].insert(0,0)
   end
 
   def set_first_column
