@@ -5,6 +5,7 @@ x = ARGV[0]
 y = ARGV[1]
 
 new_matrix = Prime.new(columns: x, rows: y)
+new_matrix.find_primes
 
 new_matrix.create_grid_array
 
