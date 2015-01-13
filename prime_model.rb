@@ -1,3 +1,5 @@
+require 'matrix'
+
 class Prime
 
   attr_accessor :matrix
@@ -5,7 +7,6 @@ class Prime
   def initialize(args)
     @columns = args[:columns].to_i ||= 10
     @rows = args[:rows].to_i ||= 10
-    @number = @columns*100
     @matrix = Array.new(@rows+1){Array.new(@columns+1, 0)}
     @primes = []
   end
@@ -38,8 +39,10 @@ class Prime
   end
 
   def find_primes
-    (2..@number).each do |num|
+    num = 2
+    until @primes.count == @columns do
       @primes << num if is_prime?(num) == true
+      num += 1
     end
   end
 
