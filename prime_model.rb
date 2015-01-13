@@ -8,7 +8,7 @@ class Prime
     @columns = args[:columns].to_i ||= 10
     @rows = args[:rows].to_i ||= 10
     @matrix = Array.new(@rows+1){Array.new(@columns+1, 0)}
-    @primes = []
+    @primes = [2]
   end
 
   def set_top_row
@@ -39,10 +39,10 @@ class Prime
   end
 
   def find_primes
-    num = 2
+    num = 3
     until @primes.count == @columns do
       @primes << num if is_prime?(num) == true
-      num += 1
+      num += 2
     end
   end
 
