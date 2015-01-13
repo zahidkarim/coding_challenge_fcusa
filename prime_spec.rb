@@ -3,8 +3,8 @@ require_relative 'prime_model'
 describe "Prime" do
 
   let (:test) {Prime.new(columns:10,rows:10)}
-  let (:test_array1) {[2,3,5,7,11]}
-  let (:test_array2) {[2,3,5,7,11,14]}
+  let (:test_array1) {[3,5,7,11,17]}
+  let (:test_array2) {[3,5,7,11,14]}
 
   describe "Prime#is_prime?" do
     it 'should return true if it is a prime number' do

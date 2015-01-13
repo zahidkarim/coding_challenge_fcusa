@@ -1,5 +1,3 @@
-require 'matrix'
-
 class Prime
 
   attr_accessor :matrix
@@ -47,12 +45,8 @@ class Prime
   end
 
   def is_prime?(number)
-      return false if number == 1
-      return true if number == 2
-      min = 2
-      while min < number
-        return false if number % min == 0
-        min += 1
+      @primes.each do |prime|
+        return false if number % prime == 0
       end
    true
   end
